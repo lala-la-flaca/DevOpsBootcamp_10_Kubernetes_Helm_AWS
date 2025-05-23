@@ -34,30 +34,72 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
      aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin <your-registry>
    ```
    <img src="" width=800 />
+   
 2. Verify that the config.json file exists at ~/.docker/config.json.
-3. <details><summary><strong> If the token is missing due to credential store usage, follow these steps: </strong></summary><ol>
-    <li>Obtain the ECR login password.</li>
-    <li>SSH into the Minikube instance.</li>
-    <li>Log in to Amazon ECR from Minikube to generate the config.json file inside Minikube.</li>
-    <li>Verify that the .docker directory was created in Minikube.</li>
-    <li>Check that the config.json file exists and contains the credentials.</li>
-    <li>Copy the config.json file from Minikube to your local .docker directory.</li>
+
+   ```bash
+   cat ~/.docker/config.json
+   ```
+   <img src="" width=800 />
+   
+4. <details><summary><strong> If the token is missing due to credential store usage, follow these steps: </strong></summary><ol>
+  <li>Obtain the ECR login password.</li>
+    ```bash
+    aws ecr get-login-password 
+    ```
+    <img src="" width=800 />
+  <li>SSH into the Minikube instance.</li>
+    ```bash
+    minikube ssh
+    ```
+    <img src="" width=800 />
+    
+  <li>Log in to Amazon ECR from Minikube to generate the config.json file inside Minikube.</li>
+    ```bash
+    docker login --username AWS -p <copy_password_previous_step>
+    ```
+    <img src="" width=800 />
+  <li>Verify that the .docker directory was created in Minikube.</li>
+    ```bash
+      ls -la
+    ```
+    <img src="" width=800 />
+      
+  <li>Check that the config.json file exists and contains the credentials.</li>
+    ```bash
+     cat .docker/config.json
+    ```
+    <img src="" width=800 />
+    
+  <li>Copy the config.json file from Minikube to your local .docker directory.</li>
+    ```bash
+      minikube cp minikue:/home/docker/.docker/config.json ~/.docker/config.json
+    ```
+    <img src="" width=800 />
 </ol>    
 </details>
+
 4. Encode the config.json file using Base64.
    ```bash
-   cat ~/.docker/config.json | Base64
+   cat ~/.docker/config.json | base64
    ```
-5. Insert the encoded credentials into the YAML file under the .dockerconfigjson section.
-  <img src="" width=800 />
-6. Set the secret name to my-registry-key.
-  <img src="" width=800 />
-7. Apply the secret using kubectl apply -f <secret-file>.yaml.
-  ```bash
-    kubectl apply -f secret.yaml
-  ```
+   <img src="" width=800 />
 
-### Creating Generic Secret Component Using CommandLine
+5. Insert the encoded credentials into the YAML file under the .dockerconfigjson section.
+
+   <img src="" width=800 />
+  
+7. Set the secret name to my-registry-key.
+
+  <img src="" width=800 />
+  
+9. Apply the secret using kubectl apply -f <secret-file>.yaml.
+    ```bash
+      kubectl apply -f secret.yaml
+    ```
+  <img src="" width=800 />
+
+### Creating a Generic Secret Component Using CommandLine
 1. Log in to Amazon ECR using the AWS CLI to generate the config.json file.
    ```bash
      aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin <your-registry>
@@ -68,15 +110,20 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
       --from-file=.dockerconfigjson=~/.docker/config.json \  
       --type=kubernetes.io/dockerconfigjson 
    ```
+   <img src="" width=800 />
+   
 4. Verify that the secret was created:
+  
   ```bash  
     kubectl get secret
   ```
+  <img src="" width=800 />
 
 ### Creating Docker Registry Secret Component Using the Command Line
 1. Retrieve the ECR login password:
    ```bash
-   aws ecr get-login-password 
+     aws ecr get-login-password
+   ```
 2. Use the password to create the Docker registry secret:
    ```bash
          kubectl create secret docker-registry my-registry-key-two \  
@@ -84,6 +131,7 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
       --docker-username=AWS \  
       --docker-password=$(aws ecr get-login-password)
    ```
+   <img src="" width=800 />
 
 ### Configure the Deployment YAML File
 1. Open the deployment YAML file.
@@ -93,14 +141,18 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
          - name: my-registry-key 
    ```
 3. Specify the container image from your ECR repository
-4. Apply the deployment YAML file:
+
+   <img src="" width=800 />
+   
+5. Apply the deployment YAML file:
    ```bash
    kubectl apply -f deployment.yaml
    ```
-5. Verify that the pods are running:
+6. Verify that the pods are running:
    ```bash
    kubectl get pods
    ```
+   <img src="" width=800 />
    
 
   
