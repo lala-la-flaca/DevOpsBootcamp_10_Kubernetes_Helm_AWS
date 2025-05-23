@@ -44,10 +44,8 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
    
 4. <details><summary><strong> If the token is missing due to credential store usage, follow these steps: </strong></summary><ol>
     <li>Obtain the ECR login password.</li>
-        ```bash
-          aws ecr get-login-password 
-        ```
-        <img src="" width=800 />
+      <pre><code class="language-bash">aws ecr get-login-password </code></pre>
+      <img src="" width=800 />
     <li>SSH into the Minikube instance.</li>
             ```bash
               minikube ssh
