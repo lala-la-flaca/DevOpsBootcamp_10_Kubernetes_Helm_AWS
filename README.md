@@ -35,8 +35,9 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
    ```
    <img src="" width=800 />
 2. Verify that the config.json file exists at ~/.docker/config.json.
-3. <details><summary><strong> If the token is missing due to credential store usage, follow these steps: </strong></summary>
-  
+3. <details>
+  <summary><strong> If the token is missing due to credential store usage, follow these steps: </strong></summary>
+  <br>
   1. Obtain the ECR login password.
   2. SSH into the Minikube instance.
   3. Log in to Amazon ECR from Minikube to generate the config.json file inside Minikube.
