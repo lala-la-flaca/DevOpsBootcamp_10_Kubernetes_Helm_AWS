@@ -47,33 +47,23 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
       <pre><code class="language-bash">aws ecr get-login-password </code></pre>
       <img src="" width=800 />
     <li>SSH into the Minikube instance.</li>
-            ```bash
-              minikube ssh
-            ```
-            <img src="" width=800 />
-        
+      <pre><code class="language-bash">minikube ssh </code></pre>
+      <img src="" width=800 />
+          
     <li>Log in to Amazon ECR from Minikube to generate the config.json file inside Minikube.</li>
-        ```bash
-        docker login --username AWS -p <copy_password_previous_step>
-        ```
-        <img src="" width=800 />
+      <pre><code class="language-bash">docker login --username AWS -p <copy_password_previous_step> </code></pre>
+      <img src="" width=800 />
     <li>Verify that the .docker directory was created in Minikube.</li>
-        ```bash
-          ls -la
-        ```
+        <pre><code class="language-bash">ls -la</code></pre>
         <img src="" width=800 />
         
     <li>Check that the config.json file exists and contains the credentials.</li>
-        ```bash
-         cat .docker/config.json
-        ```
+        <pre><code class="language-bash">cat .docker/config.json </code></pre>
         <img src="" width=800 />
       
     <li>Copy the config.json file from Minikube to your local .docker directory.</li>
-        ```bash
-          minikube cp minikue:/home/docker/.docker/config.json ~/.docker/config.json
-        ```
-        <img src="" width=800 />
+       <pre><code class="language-bash">minikube cp minikue:/home/docker/.docker/config.json ~/.docker/config.json </code></pre>
+       <img src="" width=800 />
 </ol>    
 </details>
 
