@@ -43,39 +43,39 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
    <img src="" width=800 />
    
 4. <details><summary><strong> If the token is missing due to credential store usage, follow these steps: </strong></summary><ol>
-  <li>Obtain the ECR login password.</li>
-    ```bash
-    aws ecr get-login-password 
-    ```
-    <img src="" width=800 />
-  <li>SSH into the Minikube instance.</li>
-    ```bash
-    minikube ssh
-    ```
-    <img src="" width=800 />
-    
-  <li>Log in to Amazon ECR from Minikube to generate the config.json file inside Minikube.</li>
-    ```bash
-    docker login --username AWS -p <copy_password_previous_step>
-    ```
-    <img src="" width=800 />
-  <li>Verify that the .docker directory was created in Minikube.</li>
-    ```bash
-      ls -la
-    ```
-    <img src="" width=800 />
+    <li>Obtain the ECR login password.</li>
+        ```bash
+          aws ecr get-login-password 
+        ```
+        <img src="" width=800 />
+    <li>SSH into the Minikube instance.</li>
+        ```bash
+        minikube ssh
+        ```
+        <img src="" width=800 />
       
-  <li>Check that the config.json file exists and contains the credentials.</li>
-    ```bash
-     cat .docker/config.json
-    ```
-    <img src="" width=800 />
-    
-  <li>Copy the config.json file from Minikube to your local .docker directory.</li>
-    ```bash
-      minikube cp minikue:/home/docker/.docker/config.json ~/.docker/config.json
-    ```
-    <img src="" width=800 />
+    <li>Log in to Amazon ECR from Minikube to generate the config.json file inside Minikube.</li>
+        ```bash
+        docker login --username AWS -p <copy_password_previous_step>
+        ```
+        <img src="" width=800 />
+    <li>Verify that the .docker directory was created in Minikube.</li>
+        ```bash
+          ls -la
+        ```
+        <img src="" width=800 />
+        
+    <li>Check that the config.json file exists and contains the credentials.</li>
+        ```bash
+         cat .docker/config.json
+        ```
+        <img src="" width=800 />
+      
+    <li>Copy the config.json file from Minikube to your local .docker directory.</li>
+        ```bash
+          minikube cp minikue:/home/docker/.docker/config.json ~/.docker/config.json
+        ```
+        <img src="" width=800 />
 </ol>    
 </details>
 
