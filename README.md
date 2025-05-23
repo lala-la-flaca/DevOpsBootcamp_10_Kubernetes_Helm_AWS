@@ -49,11 +49,11 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
         ```
         <img src="" width=800 />
     <li>SSH into the Minikube instance.</li>
-        ```bash
-        minikube ssh
-        ```
-        <img src="" width=800 />
-      
+            ```bash
+              minikube ssh
+            ```
+            <img src="" width=800 />
+        
     <li>Log in to Amazon ECR from Minikube to generate the config.json file inside Minikube.</li>
         ```bash
         docker login --username AWS -p <copy_password_previous_step>
