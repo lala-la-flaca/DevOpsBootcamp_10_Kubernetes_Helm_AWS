@@ -42,7 +42,7 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
    ```
    <img src="" width=800 />
    
-4. <details><summary><strong> If the token is missing due to credential store usage, follow these steps: </strong></summary><ol>
+3. <details><summary><strong> If the token is missing due to credential store usage, follow these steps: </strong></summary><ol>
     <li>Obtain the ECR login password.</li>
       <pre><code class="language-bash">aws ecr get-login-password </code></pre>
       <img src="" width=800 />
@@ -77,11 +77,11 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
 
    <img src="" width=800 />
   
-7. Set the secret name to my-registry-key.
+6. Set the secret name to my-registry-key.
 
-  <img src="" width=800 />
+   <img src="" width=800 />
   
-9. Apply the secret using kubectl apply -f <secret-file>.yaml.
+7. Apply the secret using kubectl apply -f <secret-file>.yaml.
     ```bash
       kubectl apply -f secret.yaml
     ```
@@ -92,7 +92,7 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
    ```bash
      aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin <your-registry>
    ```
-3. Run the following command to create the secret named my-registry-key:
+2. Run the following command to create the secret named my-registry-key:
    ```bash
        kubectl create secret generic my-registry-key \  
       --from-file=.dockerconfigjson=~/.docker/config.json \  
@@ -100,7 +100,7 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
    ```
    <img src="" width=800 />
    
-4. Verify that the secret was created:
+3. Verify that the secret was created:
   
   ```bash  
     kubectl get secret
@@ -132,11 +132,11 @@ This demo project is part of **Kubernetes Module** from Nana **TWN DevOps Bootca
 
    <img src="" width=800 />
    
-5. Apply the deployment YAML file:
+4. Apply the deployment YAML file:
    ```bash
    kubectl apply -f deployment.yaml
    ```
-6. Verify that the pods are running:
+5. Verify that the pods are running:
    ```bash
    kubectl get pods
    ```
